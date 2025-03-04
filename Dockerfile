@@ -12,4 +12,4 @@ RUN npm prune --production
 
 EXPOSE 1337
 
-CMD ["npm", "prod"]
+CMD ["npm", "run", "prod"]
