@@ -1,6 +1,7 @@
 services:
   scam-bank-client:
     image: microseversk/scam-bank-user-client:latest
+    container_name: scam-bank-user-client
     build: .
     ports:
       - 1337:1337
