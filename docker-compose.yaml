@@ -6,3 +6,4 @@ services:
       - 1337:1337
     environment:
       - PORT=1337
+      - API_URL=http://45.130.146.135:4000/gateway
