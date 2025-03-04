@@ -1,0 +1,8 @@
+services:
+  scam-bank-client:
+    image: microseversk/scam-bank-user-client:latest
+    build: .
+    ports:
+      - 1337:1337
+    environment:
+      - PORT=1337
