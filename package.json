@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "mock": "yarn mcs",
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 1337",
     "dev-mock": "concurrently \"yarn mock\" \"yarn dev\"",
     "build": "next build",
     "start": "next start",
-    "prod": "yarn build && yarn start",
+    "prod": "yarn build && yarn start -p 1337",
     "lint": "next lint",
     "prepare": "husky"
   },
