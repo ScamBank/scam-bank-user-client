@@ -1,13 +1,14 @@
 import { getUsers } from "@/utils/api/requests/get";
 import { ClientCard } from "./(components)/ClientCard/ClientCard";
+import { CreateUserForm } from "./(components)/CreateUserForm/CreateUserForm";
 
 const ClientsPage = async () => {
   const users = await getUsers();
-  console.log(users.data);
 
   return (
-    <main className=" p-6">
-      <ul className="w-full flex flex-col gap-4 items-center justify-center">
+    <main className="py-6 flex justify-evenly">
+      <CreateUserForm />
+      <ul className="flex flex-col gap-4 ">
         {users.data.map((user) => (
           <li key={user.id}>
             <ClientCard user={user} />
