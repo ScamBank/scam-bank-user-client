@@ -1,7 +1,7 @@
 import fetches from "@siberiacancode/fetches";
 
 export const instance = fetches.create({
-  baseURL: process.env.API_URL || "http://localhost:4000/gateway",
+  baseURL: process.env.API_URL || "http://localhost:4000/api",
 });
 
 instance.interceptors.request.use(
@@ -14,3 +14,21 @@ instance.interceptors.request.use(
   },
   (error) => Promise.reject(error),
 );
+
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (response) => {
+    console.log(`------------------------------------------`);
+    console.log(
+      `${response.config.method?.toUpperCase()} request on: ${response.config.url} failed`,
+    );
+    console.log(
+      `Error code - ${response.response.status}, ${response.response.data.message}`,
+    );
+    console.log(`------------------------------------------`);
+    return Promise.reject(response);
+  },
+);
+
