@@ -73,7 +73,7 @@ export const CreateUserForm = () => {
                   name="lastName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Фамилия</FormLabel>
+                      <FormLabel required>Фамилия</FormLabel>
                       <FormControl>
                         <Input placeholder="Смирнов" {...field} />
                       </FormControl>
@@ -86,7 +86,7 @@ export const CreateUserForm = () => {
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Имя</FormLabel>
+                      <FormLabel required>Имя</FormLabel>
                       <FormControl>
                         <Input placeholder="Иван" {...field} />
                       </FormControl>
@@ -99,7 +99,7 @@ export const CreateUserForm = () => {
                   name="middleName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Отчество</FormLabel>
+                      <FormLabel required>Отчество</FormLabel>
                       <FormControl>
                         <Input placeholder="Петрович" {...field} />
                       </FormControl>
@@ -112,7 +112,7 @@ export const CreateUserForm = () => {
                   name="birthDate"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Дата рождения</FormLabel>
+                      <FormLabel required>Дата рождения</FormLabel>
                       <FormControl>
                         <InputMask
                           component={Input}
@@ -141,7 +141,7 @@ export const CreateUserForm = () => {
                   name="phoneNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Номер телефона</FormLabel>
+                      <FormLabel required>Номер телефона</FormLabel>
                       <FormControl>
                         <InputMask
                           component={Input}
@@ -187,7 +187,7 @@ export const CreateUserForm = () => {
                   name="snils"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>СНИЛС</FormLabel>
+                      <FormLabel required>СНИЛС</FormLabel>
                       <FormControl>
                         <InputMask
                           component={Input}
@@ -206,7 +206,7 @@ export const CreateUserForm = () => {
                   name="passport"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Паспорт</FormLabel>
+                      <FormLabel required>Паспорт</FormLabel>
                       <FormControl>
                         <InputMask
                           component={Input}
