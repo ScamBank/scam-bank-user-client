@@ -9,11 +9,12 @@ const ClientsPage = async () => {
     <main className="py-6 flex justify-evenly">
       <CreateUserForm />
       <ul className="flex flex-col gap-4 ">
-        {users.data.map((user) => (
-          <li key={user.id}>
-            <ClientCard user={user} />
-          </li>
-        ))}
+        {users.success &&
+          users.data.map((user) => (
+            <li key={user.id}>
+              <ClientCard user={user} />
+            </li>
+          ))}
       </ul>
     </main>
   );

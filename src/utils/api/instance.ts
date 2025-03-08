@@ -6,29 +6,23 @@ export const instance = fetches.create({
 
 instance.interceptors.request.use(
   (config) => {
-    console.log(`------------------------------------------`);
-    console.log(`${config.method?.toUpperCase()} request on: ${config.url}`);
-    console.log(`Cache: ${config.next?.tags}`);
-    console.log(`------------------------------------------`);
+    console.log(
+      `${config.method?.toUpperCase()} request on: ${config.url}\nCache: ${config.next?.tags}`,
+    );
     return config;
   },
-  (error) => Promise.reject(error),
+  (error) => error,
 );
 
 instance.interceptors.response.use(
   (response) => {
-    return response;
+    return { ...response, success: true };
   },
-  (response) => {
-    console.log(`------------------------------------------`);
+  (error) => {
     console.log(
-      `${response.config.method?.toUpperCase()} request on: ${response.config.url} failed`,
+      `${error.config.method?.toUpperCase()} request on: ${error.config.url} failed\nError code - ${error.response.status}\n${error.response.data}`,
     );
-    console.log(
-      `Error code - ${response.response.status}, ${response.response.data.message}`,
-    );
-    console.log(`------------------------------------------`);
-    return Promise.reject(response);
+
+    return { ...error.response, success: false };
   },
 );
-

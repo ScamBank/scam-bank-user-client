@@ -4,37 +4,26 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "./constants/formSchema";
+
+import { InputMask } from "@react-input/mask";
+
+import { postCreateUser } from "@/utils/api/requests/post";
 import {
+  Button,
   Card,
+  Form,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  Separator,
-} from "@/components/ui";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
-import { InputMask } from "@react-input/mask";
-import {
-  Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { useState } from "react";
-import { Calendar } from "@/components/ui/calendar";
-import { postCreateUser } from "@/utils/api/requests/post";
-import { instance } from "@/utils/api/instance";
+  Input,
+  Separator,
+} from "@/components/ui";
 
 export const CreateUserForm = () => {
   const userForm = useForm<z.infer<typeof formSchema>>({
@@ -52,18 +41,22 @@ export const CreateUserForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await postCreateUser({
+    const response = await postCreateUser({
       ...values,
       birthDate: new Date(values.birthDate).toISOString(),
     } as CreateUserDto);
+
+    if (!response.success) {
+      alert(response.data.message);
+    }
   }
 
   return (
-    <Card className="w-full max-w-3xl">
+    <Card className="w-full max-w-xl">
       <CardHeader>
-        <CardTitle>Create New User</CardTitle>
+        <CardTitle>Создание нового клиента</CardTitle>
         <CardDescription>
-          Enter the user's information to create a new account.
+          Введите данные пользователя, чтобы создать новую учетную запись.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -73,16 +66,16 @@ export const CreateUserForm = () => {
             className="space-y-6"
           >
             <div>
-              <h3 className="text-lg font-medium mb-4">Personal Information</h3>
+              <h3 className="text-lg font-medium mb-4">Личная информация</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={userForm.control}
                   name="lastName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Last Name</FormLabel>
+                      <FormLabel>Фамилия</FormLabel>
                       <FormControl>
-                        <Input placeholder="Smirnov" {...field} />
+                        <Input placeholder="Смирнов" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -93,9 +86,9 @@ export const CreateUserForm = () => {
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>First Name</FormLabel>
+                      <FormLabel>Имя</FormLabel>
                       <FormControl>
-                        <Input placeholder="Ivan" {...field} />
+                        <Input placeholder="Иван" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -106,9 +99,9 @@ export const CreateUserForm = () => {
                   name="middleName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Middle Name</FormLabel>
+                      <FormLabel>Отчество</FormLabel>
                       <FormControl>
-                        <Input placeholder="Petrovich" {...field} />
+                        <Input placeholder="Петрович" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -119,7 +112,7 @@ export const CreateUserForm = () => {
                   name="birthDate"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Date of Birth</FormLabel>
+                      <FormLabel>Дата рождения</FormLabel>
                       <FormControl>
                         <InputMask
                           component={Input}
@@ -139,14 +132,16 @@ export const CreateUserForm = () => {
             <Separator />
 
             <div>
-              <h3 className="text-lg font-medium mb-4">Contact Information</h3>
+              <h3 className="text-lg font-medium mb-4">
+                Контактная информация
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={userForm.control}
                   name="phoneNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Phone Number</FormLabel>
+                      <FormLabel>Номер телефона</FormLabel>
                       <FormControl>
                         <InputMask
                           component={Input}
@@ -183,14 +178,16 @@ export const CreateUserForm = () => {
             <Separator />
 
             <div>
-              <h3 className="text-lg font-medium mb-4">Document Information</h3>
+              <h3 className="text-lg font-medium mb-4">
+                Информация о документах
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={userForm.control}
                   name="snils"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>SNILS</FormLabel>
+                      <FormLabel>СНИЛС</FormLabel>
                       <FormControl>
                         <InputMask
                           component={Input}
@@ -209,7 +206,7 @@ export const CreateUserForm = () => {
                   name="passport"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Passport</FormLabel>
+                      <FormLabel>Паспорт</FormLabel>
                       <FormControl>
                         <InputMask
                           component={Input}
@@ -232,12 +229,10 @@ export const CreateUserForm = () => {
                 type="button"
                 onClick={() => userForm.reset()}
               >
-                Reset
+                Сбросить
               </Button>
               <Button type="submit">
-                {userForm.formState.isSubmitting
-                  ? "Creating..."
-                  : "Create User"}
+                {userForm.formState.isSubmitting ? "Создание..." : "Создать"}
               </Button>
             </div>
           </form>
