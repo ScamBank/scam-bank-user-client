@@ -1,5 +1,4 @@
 import {
-  Badge,
   Card,
   CardContent,
   CardDescription,
@@ -12,23 +11,20 @@ import {
 } from "@/components/ui";
 
 interface ClientCardProps {
-  user: User;
+  user: User1c;
 }
 
 export const ClientCard = ({ user }: ClientCardProps) => (
-  <Card className="w-full max-w-3xl">
+  <Card className=" max-w-xl w-[400px]">
     <Collapsible>
       <CollapsibleTrigger asChild className="cursor-pointer">
         <CardHeader className="flex flex-row items-start gap-4 w-full">
           <div>
             <CardTitle className="text-2xl">
-              {user.lastName} {user.firstName} {user.middleName}
+              {user.Surname} {user.Name} {user.Patronymic}
             </CardTitle>
-            <CardDescription>ID: {user.id}</CardDescription>
+            <CardDescription>ID: {user.UserGuid}</CardDescription>
           </div>
-          <Badge variant={user.isActive ? "outline" : "destructive"}>
-            {user.isActive ? "Active" : "Inactive"}
-          </Badge>
         </CardHeader>
       </CollapsibleTrigger>
       <CollapsibleContent>
@@ -43,14 +39,14 @@ export const ClientCard = ({ user }: ClientCardProps) => (
                   Полное имя
                 </p>
                 <p>
-                  {user.lastName} {user.firstName} {user.middleName}
+                  {user.Surname} {user.Name} {user.Patronymic}
                 </p>
               </div>
               <div>
                 <p className="text-sm font-medium text-muted-foreground">
                   Дата рождения
                 </p>
-                <p>{new Date(user.birthDate).toLocaleDateString()}</p>
+                <p>{new Date(user.BirthDate).toLocaleDateString()}</p>
               </div>
             </div>
           </div>
@@ -66,14 +62,14 @@ export const ClientCard = ({ user }: ClientCardProps) => (
                 <p className="text-sm font-medium text-muted-foreground">
                   Телефон
                 </p>
-                <p>{user.phoneNumber}</p>
+                <p>{user.PhoneNumber}</p>
               </div>
-              <div>
+              {/* <div>
                 <p className="text-sm font-medium text-muted-foreground">
                   Email
                 </p>
                 <p>{user.email}</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -86,20 +82,22 @@ export const ClientCard = ({ user }: ClientCardProps) => (
                 <p className="text-sm font-medium text-muted-foreground">
                   СНИЛС
                 </p>
-                <p>{user.snils}</p>
+                <p>{user.Snils}</p>
               </div>
               <div>
                 <p className="text-sm font-medium text-muted-foreground">
                   Паспорт
                 </p>
-                <p>{user.passport}</p>
+                <p>
+                  {user.PassportSeries} {user.PassportNumber}
+                </p>
               </div>
             </div>
           </div>
 
-          <Separator />
+          {/* <Separator /> */}
 
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold mb-2">Системная информация</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -115,7 +113,7 @@ export const ClientCard = ({ user }: ClientCardProps) => (
                 <p>{new Date(user.updatedAt).toLocaleDateString()}</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </CardContent>
       </CollapsibleContent>
     </Collapsible>

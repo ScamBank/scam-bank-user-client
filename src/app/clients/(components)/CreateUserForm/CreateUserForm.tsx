@@ -7,7 +7,7 @@ import { formSchema } from "./constants/formSchema";
 
 import { InputMask } from "@react-input/mask";
 
-import { postCreateUser } from "@/utils/api/requests/post";
+import { postCreateUser, postCreateUser1c } from "@/utils/api/requests/post";
 import {
   Button,
   Card,
@@ -25,32 +25,44 @@ import {
   Separator,
 } from "@/components/ui";
 import { useRouter } from "next/navigation";
+import { parse } from "date-fns";
 
 export const CreateUserForm = () => {
   const router = useRouter();
   const userForm = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      birthDate: "",
-      email: "",
-      firstName: "",
-      lastName: "",
-      middleName: "",
+      BirthDate: "",
+      Name: "",
       passport: "",
-      phoneNumber: "",
-      snils: "",
+      Patronymic: "",
+      PhoneNumber: "",
+      Snils: "",
+      Surname: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const response = await postCreateUser({
-      ...values,
-      birthDate: new Date(values.birthDate).toISOString(),
-    } as CreateUserDto);
-
+    const body = {
+      Address: "кукушкина",
+      BirthDate: parse(
+        values.BirthDate,
+        "dd.MM.yyyy",
+        new Date(),
+      ).toISOString(),
+      Name: values.Name,
+      PassportNumber: values.passport.split(" ")[1],
+      PassportSeries: values.passport.split(" ")[0],
+      Patronymic: values.Patronymic,
+      PhoneNumber: values.PhoneNumber,
+      Snils: values.Snils,
+      Surname: values.Surname,
+      UserType: "User",
+    } satisfies CreateUserDto1S;
+    const response = await postCreateUser1c(body);
+    console.log(response.success);
     if (!response.success) {
-      alert(response.data.message);
-      return;
+      alert("Что-то пошло не так");
     }
     router.refresh();
   }
@@ -74,7 +86,7 @@ export const CreateUserForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={userForm.control}
-                  name="lastName"
+                  name="Surname"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel required>Фамилия</FormLabel>
@@ -87,7 +99,7 @@ export const CreateUserForm = () => {
                 />
                 <FormField
                   control={userForm.control}
-                  name="firstName"
+                  name="Name"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel required>Имя</FormLabel>
@@ -100,7 +112,7 @@ export const CreateUserForm = () => {
                 />
                 <FormField
                   control={userForm.control}
-                  name="middleName"
+                  name="Patronymic"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel required>Отчество</FormLabel>
@@ -113,7 +125,7 @@ export const CreateUserForm = () => {
                 />
                 <FormField
                   control={userForm.control}
-                  name="birthDate"
+                  name="BirthDate"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel required>Дата рождения</FormLabel>
@@ -142,7 +154,7 @@ export const CreateUserForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={userForm.control}
-                  name="phoneNumber"
+                  name="PhoneNumber"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel required>Номер телефона</FormLabel>
@@ -159,7 +171,7 @@ export const CreateUserForm = () => {
                     </FormItem>
                   )}
                 />
-                <FormField
+                {/* <FormField
                   control={userForm.control}
                   name="email"
                   render={({ field }) => (
@@ -175,7 +187,7 @@ export const CreateUserForm = () => {
                       <FormMessage />
                     </FormItem>
                   )}
-                />
+                /> */}
               </div>
             </div>
 
@@ -188,7 +200,7 @@ export const CreateUserForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={userForm.control}
-                  name="snils"
+                  name="Snils"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel required>СНИЛС</FormLabel>

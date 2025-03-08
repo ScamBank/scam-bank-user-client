@@ -1,8 +1,10 @@
-import { getUsers } from "@/utils/api/requests/get";
+import { getUsers, getUsers1c } from "@/utils/api/requests/get";
 import { ClientCard, CreateUserForm } from "./(components)";
 
 const ClientsPage = async () => {
-  const users = await getUsers();
+  const users1c = await getUsers1c();
+  console.log("@1c", users1c);
+  const users1cData = JSON.parse(users1c.data as unknown as string) as User1c[];
 
   return (
     <main className="py-6 flex justify-evenly">
@@ -10,9 +12,9 @@ const ClientsPage = async () => {
         <CreateUserForm />
       </div>
       <ul className="flex flex-col gap-4 ">
-        {users.success &&
-          users.data.toReversed().map((user) => (
-            <li key={user.id}>
+        {users1c.success &&
+          users1cData.map((user, index) => (
+            <li key={index}>
               <ClientCard user={user} />
             </li>
           ))}

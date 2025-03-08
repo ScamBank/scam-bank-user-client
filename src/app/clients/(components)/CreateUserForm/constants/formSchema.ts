@@ -2,26 +2,22 @@ import { isValid, min, parse } from "date-fns";
 import { z } from "zod";
 
 export const formSchema = z.object({
-  firstName: z
-    .string()
-    .min(2, "Имя должно содержать не менее 2 символов")
-    .max(50),
-  middleName: z
+  Name: z.string().min(2, "Имя должно содержать не менее 2 символов").max(50),
+  Patronymic: z
     .string()
     .min(2, "Отчество должно содержать не менее 2 символов")
     .max(50),
-  lastName: z
+  Surname: z
     .string()
     .min(2, "Фамилия должна содержать не менее 2 символов")
     .max(50),
-  phoneNumber: z
+  PhoneNumber: z
     .string()
     .regex(
       /^\+7-\(\d{3}\)-\d{3}-\d{2}-\d{2}$/,
       "Неверный формат телефонного номера",
     ),
-  email: z.string().optional(),
-  snils: z
+  Snils: z
     .string()
     .regex(
       /^\d{3}-\d{3}-\d{3}\s\d{2}$/,
@@ -30,7 +26,7 @@ export const formSchema = z.object({
   passport: z
     .string()
     .regex(/^\d{4}\s\d{6}$/, "Паспорт должен иметь формат XXXX XXXXXX"),
-  birthDate: z
+  BirthDate: z
     .string({
       required_error: "Дата рождения обязательна",
     })
