@@ -56,7 +56,7 @@ export const CreateUserForm = () => {
   }
 
   return (
-    <Card className="w-full max-w-xl">
+    <Card className="w-full max-w-lg h-fit fixed">
       <CardHeader>
         <CardTitle>Создание нового клиента</CardTitle>
         <CardDescription>

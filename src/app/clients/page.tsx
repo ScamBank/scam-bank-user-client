@@ -6,7 +6,9 @@ const ClientsPage = async () => {
 
   return (
     <main className="py-6 flex justify-evenly">
-      <CreateUserForm />
+      <div className="relative w-full max-w-lg">
+        <CreateUserForm />
+      </div>
       <ul className="flex flex-col gap-4 ">
         {users.success &&
           users.data.toReversed().map((user) => (
