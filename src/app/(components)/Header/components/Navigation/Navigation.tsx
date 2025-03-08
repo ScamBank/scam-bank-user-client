@@ -18,17 +18,8 @@ export const Navigation = () => {
   return (
     <nav className="h-full">
       <ul className={"flex h-full items-center gap-10 [&_li]:font-medium"}>
-        <li className={navLinkClassName(ROUTES.FAVORITES)}>
-          <Link href={ROUTES.FAVORITES}>Главная</Link>
-        </li>
-        <li className={navLinkClassName(ROUTES.TEMPLATES)}>
-          <Link href={ROUTES.TEMPLATES}> Шаблоны </Link>
-        </li>
-        <li className={navLinkClassName(ROUTES.HISTORY)}>
-          <Link href={ROUTES.HISTORY}> История </Link>
-        </li>
-        <li className={navLinkClassName(ROUTES.PAY)}>
-          <Link href={ROUTES.PAY}> Платежи и переводы </Link>
+        <li className={navLinkClassName(ROUTES.ACCOUNTS)}>
+          <Link href={ROUTES.ACCOUNTS}>Счета</Link>
         </li>
         <li className={navLinkClassName(ROUTES.CLIENTS)}>
           <Link href={ROUTES.CLIENTS}> Клиенты </Link>

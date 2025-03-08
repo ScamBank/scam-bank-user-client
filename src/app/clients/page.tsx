@@ -5,7 +5,6 @@ export const dynamic = "force-dynamic";
 
 const ClientsPage = async () => {
   const users1c = await getUsers1c();
-  console.log("@1c", users1c);
   const users1cData = JSON.parse(users1c.data as unknown as string) as User1c[];
 
   return (
