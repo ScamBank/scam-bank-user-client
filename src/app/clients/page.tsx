@@ -1,5 +1,7 @@
-import { getUsers, getUsers1c } from "@/utils/api/requests/get";
+import { getUsers1c } from "@/utils/api/requests/get";
 import { ClientCard, CreateUserForm } from "./(components)";
+
+export const dynamic = "force-dynamic";
 
 const ClientsPage = async () => {
   const users1c = await getUsers1c();
