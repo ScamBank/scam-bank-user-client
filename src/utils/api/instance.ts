@@ -1,7 +1,7 @@
 import fetches from "@siberiacancode/fetches";
 
 export const instance = fetches.create({
-  baseURL: process.env.API_URL || "http://localhost:4000/gateway",
+  baseURL: process.env.API_URL || "http://localhost:4000/api",
 });
 
 instance.interceptors.request.use(
