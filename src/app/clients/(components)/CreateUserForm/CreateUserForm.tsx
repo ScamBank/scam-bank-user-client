@@ -24,8 +24,10 @@ import {
   Input,
   Separator,
 } from "@/components/ui";
+import { useRouter } from "next/navigation";
 
 export const CreateUserForm = () => {
+  const router = useRouter();
   const userForm = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,7 +50,9 @@ export const CreateUserForm = () => {
 
     if (!response.success) {
       alert(response.data.message);
+      return;
     }
+    router.refresh();
   }
 
   return (

@@ -1,6 +1,5 @@
 import { getUsers } from "@/utils/api/requests/get";
-import { ClientCard } from "./(components)/ClientCard/ClientCard";
-import { CreateUserForm } from "./(components)/CreateUserForm/CreateUserForm";
+import { ClientCard, CreateUserForm } from "./(components)";
 
 const ClientsPage = async () => {
   const users = await getUsers();
@@ -10,7 +9,7 @@ const ClientsPage = async () => {
       <CreateUserForm />
       <ul className="flex flex-col gap-4 ">
         {users.success &&
-          users.data.map((user) => (
+          users.data.toReversed().map((user) => (
             <li key={user.id}>
               <ClientCard user={user} />
             </li>
