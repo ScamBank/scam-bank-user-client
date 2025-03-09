@@ -2,17 +2,26 @@
 
 import { Button, Form } from "@/components/ui";
 import { postUserAccountCreate } from "@/utils/api/requests/post";
+import { getCookie } from "@/utils/helpers";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 export const CreateAccountButton = () => {
   const router = useRouter();
   const form = useForm();
+  const [guid, setGuid] = useState("");
+
+  useEffect(() => {
+    if (!document) return;
+    if (!document.cookie) return;
+    setGuid(getCookie("guid") || "");
+  });
 
   const onCreateAccountClick = async () => {
     const response = await postUserAccountCreate({
-      params: { UserGuid: "8a2e4702-fc13-11ef-81a1-005056bc249c" },
+      params: { UserGuid: guid },
     });
     router.refresh();
   };
