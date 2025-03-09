@@ -247,10 +247,7 @@ export const CreateUserForm = () => {
               >
                 Сбросить
               </Button>
-              <Button
-                type="submit"
-                className="bg-company hover:bg-company hover:opacity-80 text-black"
-              >
+              <Button type="submit" className="">
                 {userForm.formState.isSubmitting ? "Создание..." : "Создать"}
               </Button>
             </div>

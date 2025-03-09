@@ -9,14 +9,11 @@ const sampleAccounts: Account[] = [
   { accountNumber: "3056930009020004", currency: "dollar", count: 3200 },
 ];
 
-const AccountsPage = () => {
+const AccountsPage = async () => {
   return (
     <main className="py-6 flex  gap-6 flex-col items-center justify-center">
       <AccountsTable accounts={sampleAccounts} className="w-1/2" />
-      <Button
-        size="lg"
-        className="w-1/2 bg-company text-black hover:bg-company hover:opacity-80"
-      >
+      <Button size="lg" className="w-1/2">
         Создать счет
       </Button>
     </main>
