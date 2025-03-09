@@ -15,7 +15,7 @@ const AccountInfoPage = async ({
   if (!accountInfoResponse.success) return notFound();
 
   return (
-    <main className="py-6 flex gap-6 flex-col items-center justify-center w-1/3 mx-auto">
+    <main className="py-6 w-1/3 mx-auto">
       <AccountInfoCard accountInfo={accountInfoResponse.data} />
     </main>
   );

@@ -10,8 +10,10 @@ import {
   FileText,
   Phone,
 } from "lucide-react";
-import { ComponentProps } from "react";
+import { ComponentProps, useState } from "react";
 import { ru } from "date-fns/locale";
+import { TopUpAccountModal } from "./components";
+import { cn } from "@/lib/utils";
 
 interface AccountInfoCardProps extends ComponentProps<"div"> {
   accountInfo: AccountInfo;
@@ -22,9 +24,17 @@ export const AccountInfoCard = ({
   className,
   ...props
 }: AccountInfoCardProps) => {
+  const [topUpModalOpen, setTopUpModalOpen] = useState(false);
+  console.log(
+    accountInfo.AccountOperations.toSorted(
+      (a, b) =>
+        new Date(b.OperationDate).getTime() -
+        new Date(a.OperationDate).getTime(),
+    ),
+  );
   return (
-    <div className=" p-4">
-      <div className="mx-auto max-w-md">
+    <>
+      <div className={cn(className)} {...props}>
         <Card className="mb-4 overflow-hidden">
           <div className="bg-slate-700 p-4">
             <Card className="mb-4 overflow-hidden">
@@ -52,7 +62,10 @@ export const AccountInfoCard = ({
             <h3 className="font-medium mb-4">Переводы</h3>
 
             <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="flex flex-col items-center">
+              <div
+                className="flex flex-col items-center cursor-pointer [&_div]:hover:brightness-90"
+                onClick={() => setTopUpModalOpen(true)}
+              >
                 <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center mb-2">
                   <ArrowUp size={20} className="text-gray-700" />
                 </div>
@@ -115,8 +128,8 @@ export const AccountInfoCard = ({
               <ul className="space-y-6">
                 {accountInfo.AccountOperations.toSorted(
                   (a, b) =>
-                    new Date(b.OperationDate).getDate() -
-                    new Date(a.OperationDate).getDate(),
+                    new Date(b.OperationDate).getTime() -
+                    new Date(a.OperationDate).getTime(),
                 ).map((operation, index) => (
                   <li className="flex justify-between items-start" key={index}>
                     <div>
@@ -148,6 +161,12 @@ export const AccountInfoCard = ({
           </CardContent>
         </Card>
       </div>
-    </div>
+
+      <TopUpAccountModal
+        open={topUpModalOpen}
+        onOpenChange={setTopUpModalOpen}
+        account={{ ...accountInfo }}
+      />
+    </>
   );
 };

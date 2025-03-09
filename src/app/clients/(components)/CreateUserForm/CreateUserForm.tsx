@@ -7,7 +7,7 @@ import { formSchema } from "./constants/formSchema";
 
 import { InputMask } from "@react-input/mask";
 
-import { postCreateUser, postCreateUser1c } from "@/utils/api/requests/post";
+import { postCreateUser1c } from "@/utils/api/requests/post";
 import {
   Button,
   Card,
