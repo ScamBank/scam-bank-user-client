@@ -62,3 +62,13 @@ interface CreditTariff {
   LatePaymentPenalty: number;
   GracePeriod: number;
 }
+
+interface Credit {
+  CreditGuid: string;
+  Date: string;
+  TariffName: string;
+  Currency: "RUB";
+  Amount: number;
+  AmountWithPercent: number;
+  IsClosed: boolean;
+}

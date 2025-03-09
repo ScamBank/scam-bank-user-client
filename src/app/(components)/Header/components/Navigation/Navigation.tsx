@@ -11,7 +11,7 @@ export const Navigation = () => {
   const navLinkClassName = (href: string) => {
     return cn(
       "h-full flex items-center border-b-4 border-transparent",
-      pathname.includes(href) ? "opacity-100 border-black" : "opacity-50",
+      pathname.startsWith(href) ? "opacity-100 border-black" : "opacity-50",
     );
   };
 
@@ -23,6 +23,9 @@ export const Navigation = () => {
         </li>
         <li className={navLinkClassName(ROUTES.CREDITS)}>
           <Link href={ROUTES.CREDITS}>Кредиты</Link>
+        </li>
+        <li className={navLinkClassName(ROUTES.CREDITS_MY)}>
+          <Link href={ROUTES.CREDITS_MY}>Мои Кредиты</Link>
         </li>
         {/* <li className={navLinkClassName(ROUTES.CLIENTS)}>
           <Link href={ROUTES.CLIENTS}> Клиенты </Link>

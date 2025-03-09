@@ -14,7 +14,7 @@ const AccountsPage = async () => {
   if (!accountsResponse.success) return notFound();
 
   return (
-    <main className="py-6 flex gap-6 flex-col items-center justify-center w-1/3 mx-auto">
+    <main className="py-6 flex gap-6 flex-col items-center justify-center w-full xl:w-1/3 mx-auto">
       <AccountsTable accounts={accountsResponse.data} className="w-full" />
       <CreateAccountButton />
     </main>
