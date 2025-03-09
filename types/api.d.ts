@@ -26,8 +26,6 @@ interface CreateUserDto {
 
 interface Error {
   error: string;
-  message: string;
-  statusCode: number;
 }
 
 type ApiResponse<T> =

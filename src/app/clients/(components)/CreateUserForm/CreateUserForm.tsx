@@ -62,7 +62,7 @@ export const CreateUserForm = () => {
     const response = await postCreateUser1c(body);
     console.log(response.success);
     if (!response.success) {
-      alert("Что-то пошло не так");
+      alert(response.data.error.split(":")[1] ?? response.data.error);
     }
     router.refresh();
   }
