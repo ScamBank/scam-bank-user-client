@@ -46,7 +46,11 @@ export const TopUpAccountModal = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await postTopUpAccount({
-        params: { AccountGuid: account.AccountGuid, Amount: values.amount },
+        params: {
+          AccountGuid: account.AccountGuid,
+          Amount: values.amount,
+          OperationType: "TopUp",
+        },
       });
       props.onOpenChange(false);
       router.refresh();

@@ -4,6 +4,7 @@ import { FetchesRequestConfig } from "@siberiacancode/fetches";
 interface TopUpAccountBody {
   AccountGuid: string;
   Amount: number;
+  OperationType: "TopUp" | "TakeCredit";
 }
 
 type TopUpAccountRequestConfig = FetchesRequestConfig<TopUpAccountBody>;
@@ -14,6 +15,10 @@ export const postTopUpAccount = async ({
 }: TopUpAccountRequestConfig) =>
   instance.post<unknown, ApiResponse<{}>>(
     "/core1c/kondakov_patterns_core/hs/BankSystem/TopUpAccount",
-    { AccountGuid: params.AccountGuid, Amount: params.Amount },
+    {
+      AccountGuid: params.AccountGuid,
+      Amount: params.Amount,
+      OperationType: params.OperationType,
+    },
     { ...config },
   );
