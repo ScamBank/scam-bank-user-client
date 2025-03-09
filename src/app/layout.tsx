@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Kantumruy_Pro } from "next/font/google";
 import "./globals.css";
 import { Header } from "./(components)/Header";
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["cyrillic"],
 });
 
 export const metadata: Metadata = {
-  title: "Scam банк",
+  title: "Скам Банк",
 };
 
 export default function RootLayout({
