@@ -20,37 +20,25 @@ import {
 import { Eye } from "lucide-react";
 import { ComponentProps, useState } from "react";
 
-export interface Account {
-  accountNumber: string;
-  currency: "rub" | "dollar";
-  count: number;
-}
 interface AccountsTableProps extends ComponentProps<"div"> {
-  accounts: Account[];
+  accounts: Account1c[];
 }
 
-export const AccountsTable = ({
-  accounts,
-  className,
-  ...props
-}: AccountsTableProps) => {
-  const [userAccounts] = useState<Account[]>(accounts);
-  const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
+export const AccountsTable = ({ accounts, className }: AccountsTableProps) => {
+  const [selectedAccount, setSelectedAccount] = useState<Account1c | null>(
+    null,
+  );
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const formatAccountNumber = (accountNumber: string) => {
     return `•••• •••• •••• ${accountNumber.slice(-4)}`;
   };
 
-  const getCurrencySymbol = (currency: "rub" | "dollar") => {
-    return currency === "dollar" ? "$" : "₽";
+  const formatAmount = (amount: number, currency: "RUB" | "USD") => {
+    return ` ${amount.toLocaleString()} ${currency === "RUB" ? "₽" : "$"}`;
   };
 
-  const formatAmount = (amount: number, currency: "rub" | "dollar") => {
-    return `${getCurrencySymbol(currency)} ${amount.toLocaleString()}`;
-  };
-
-  const viewAccountDetails = (account: Account) => {
+  const viewAccountDetails = (account: Account1c) => {
     setSelectedAccount(account);
     setIsDialogOpen(true);
   };
@@ -70,21 +58,21 @@ export const AccountsTable = ({
             </TableHeader>
             <TableBody>
               {accounts.map((account) => (
-                <TableRow key={account.accountNumber}>
+                <TableRow key={account.Account}>
                   <TableCell className="font-medium">
-                    {formatAccountNumber(account.accountNumber)}
+                    {formatAccountNumber(account.Account)}
                   </TableCell>
                   <TableCell>
                     <Badge
                       variant={
-                        account.currency === "dollar" ? "default" : "secondary"
+                        account.Currency === "RUB" ? "default" : "secondary"
                       }
                     >
-                      {account.currency === "dollar" ? "USD" : "RUB"}
+                      {account.Currency === "RUB" ? "RUB" : "USD"}
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right">
-                    {formatAmount(account.count, account.currency)}
+                    {formatAmount(account.Balance, account.Currency)}
                   </TableCell>
                   <TableCell>
                     <Button
@@ -112,20 +100,20 @@ export const AccountsTable = ({
             <div className="space-y-4 py-4">
               <div className="grid grid-cols-2 gap-2">
                 <div className="text-sm font-medium">Номер счета</div>
-                <div className="text-sm">{selectedAccount.accountNumber}</div>
+                <div className="text-sm">{selectedAccount.Account}</div>
 
                 <div className="text-sm font-medium">Валюта:</div>
                 <div className="text-sm">
-                  {selectedAccount.currency === "dollar"
-                    ? "US Dollar (USD)"
-                    : "Russian Ruble (RUB)"}
+                  {selectedAccount.Currency === "RUB"
+                    ? "Russian Ruble (RUB)"
+                    : "US Dollar (USD)"}
                 </div>
 
                 <div className="text-sm font-medium">Баланс:</div>
                 <div className="text-sm font-bold">
                   {formatAmount(
-                    selectedAccount.count,
-                    selectedAccount.currency,
+                    selectedAccount.Balance,
+                    selectedAccount.Currency,
                   )}
                 </div>
               </div>

@@ -25,3 +25,11 @@ interface User1c {
   PassportNumber: string;
   Snils: string;
 }
+
+interface Account1c {
+  AccountGuid: string;
+  AccountState: "opened" | "closed";
+  Account: string;
+  Currency: "RUB";
+  Balance: number;
+}

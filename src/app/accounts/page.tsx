@@ -1,20 +1,17 @@
 import { Button } from "@/components/ui";
-import { Account, AccountsTable } from "./(components)";
-
-const sampleAccounts: Account[] = [
-  { accountNumber: "4012888888881881", currency: "dollar", count: 5420 },
-  { accountNumber: "5105105105105100", currency: "rub", count: 127500 },
-  { accountNumber: "3714496353984371", currency: "dollar", count: 8750 },
-  { accountNumber: "6011111111111117", currency: "rub", count: 42300 },
-  { accountNumber: "3056930009020004", currency: "dollar", count: 3200 },
-];
+import { AccountsTable } from "./(components)";
+import { getUserAccounts } from "@/utils/api/requests/get/account1c";
 
 const AccountsPage = async () => {
+  const accountsResponse = await getUserAccounts({
+    params: { UserGuid: "8a2e4702-fc13-11ef-81a1-005056bc249c" },
+  });
+
   return (
-    <main className="py-6 flex  gap-6 flex-col items-center justify-center">
-      <AccountsTable accounts={sampleAccounts} className="w-1/2" />
-      <Button size="lg" className="w-1/2">
-        Создать счет
+    <main className="py-6 flex  gap-6 flex-col items-center justify-center w-1/3 mx-auto">
+      <AccountsTable accounts={accountsResponse.data} className="w-full" />
+      <Button size="lg" className="w-full">
+        Новый счет
       </Button>
     </main>
   );
