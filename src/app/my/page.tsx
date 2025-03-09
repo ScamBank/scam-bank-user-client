@@ -16,6 +16,7 @@ const MyCreditsPage = async () => {
 
   return (
     <main className="p-6 flex w-full items-center justify-center">
+      {creditsResponse.data.length === 0 && <p>Нет кредитов</p>}
       <ul className="flex gap-3 flex-wrap">
         {creditsResponse.data.map((credit) => (
           <li key={credit.CreditGuid}>
