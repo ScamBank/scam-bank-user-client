@@ -63,7 +63,7 @@ export const TakeCreditModal = ({ tariff, ...props }: TakeCreditModalProps) => {
     if (!document) return;
     if (!document.cookie) return;
     form.setValue("UserGuid", getCookie("guid") || "");
-  }, [document]);
+  });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
