@@ -8,3 +8,4 @@ services:
     environment:
       - PORT=1337
       - NEXT_PUBLIC_API_URL=http://45.130.146.135:4000/api
+      - NEXT_PUBLIC_URL=http://45.130.146.135:1337
