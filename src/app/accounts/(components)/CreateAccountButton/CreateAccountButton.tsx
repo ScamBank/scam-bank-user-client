@@ -1,11 +1,14 @@
 "use client";
 
-import { Button } from "@/components/ui";
+import { Button, Form } from "@/components/ui";
 import { postUserAccountCreate } from "@/utils/api/requests/post";
+import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 export const CreateAccountButton = () => {
   const router = useRouter();
+  const form = useForm();
 
   const onCreateAccountClick = async () => {
     const response = await postUserAccountCreate({
@@ -15,8 +18,24 @@ export const CreateAccountButton = () => {
   };
 
   return (
-    <Button className="w-full" size="lg" onClick={onCreateAccountClick}>
-      Новый счет
-    </Button>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onCreateAccountClick)}
+        className="w-full"
+      >
+        <Button
+          type="submit"
+          className="w-full"
+          size="lg"
+          disabled={form.formState.isSubmitting}
+        >
+          {form.formState.isSubmitting ? (
+            <Loader2 className="mr-2 size-4 animate-spin" />
+          ) : (
+            "Создать счет"
+          )}
+        </Button>
+      </form>
+    </Form>
   );
 };
