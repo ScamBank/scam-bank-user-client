@@ -1,0 +1,21 @@
+import { getCreditTariffs } from "@/utils/api/requests/get";
+import { CreditTariffCard } from "./(components)";
+
+const CreditsPage = async () => {
+  const creditsTariffsResponse = await getCreditTariffs({});
+
+  return (
+    <main className="py-6 flex  gap-6 flex-col items-center justify-center w-full mx-auto">
+      <ul className="flex gap-6">
+        {creditsTariffsResponse.success &&
+          creditsTariffsResponse.data.map((tariff) => (
+            <li key={tariff.TarifGuid}>
+              <CreditTariffCard tariff={tariff} />
+            </li>
+          ))}
+      </ul>
+    </main>
+  );
+};
+
+export default CreditsPage;

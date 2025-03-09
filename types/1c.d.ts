@@ -51,3 +51,14 @@ type AccountOperation = {
 interface AccountInfo extends Account1c {
   AccountOperations: AccountOperation[];
 }
+
+interface CreditTariff {
+  TarifGuid: string;
+  TarifName: string;
+  InterestRate: number;
+  MinAmount: number;
+  MaxAmount: number;
+  MaxTerm: number;
+  LatePaymentPenalty: number;
+  GracePeriod: number;
+}
