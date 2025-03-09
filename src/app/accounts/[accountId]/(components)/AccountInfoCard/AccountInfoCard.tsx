@@ -2,18 +2,10 @@
 
 import { Card, CardContent } from "@/components/ui";
 import { formatDistanceToNow } from "date-fns";
-import {
-  ArrowRight,
-  ArrowUp,
-  Users,
-  Hash,
-  FileText,
-  Phone,
-  ArrowDown,
-} from "lucide-react";
+import { ArrowUp, Users, Hash, FileText, Phone, ArrowDown } from "lucide-react";
 import { ComponentProps, useState } from "react";
 import { ru } from "date-fns/locale";
-import { TopUpAccountModal } from "./components";
+import { DrawAccountModal, TopUpAccountModal } from "./components";
 import { cn } from "@/lib/utils";
 
 interface AccountInfoCardProps extends ComponentProps<"div"> {
@@ -26,6 +18,7 @@ export const AccountInfoCard = ({
   ...props
 }: AccountInfoCardProps) => {
   const [topUpModalOpen, setTopUpModalOpen] = useState(false);
+  const [drawModalOpen, setDrawModalOpen] = useState(false);
 
   return (
     <>
@@ -69,7 +62,10 @@ export const AccountInfoCard = ({
                 </span>
               </div>
 
-              <div className="flex flex-col items-center cursor-pointer [&_div]:hover:brightness-90">
+              <div
+                className="flex flex-col items-center cursor-pointer [&_div]:hover:brightness-90"
+                onClick={() => setDrawModalOpen(true)}
+              >
                 <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center mb-2">
                   <ArrowDown size={20} className="text-gray-700" />
                 </div>
@@ -160,6 +156,11 @@ export const AccountInfoCard = ({
       <TopUpAccountModal
         open={topUpModalOpen}
         onOpenChange={setTopUpModalOpen}
+        account={{ ...accountInfo }}
+      />
+      <DrawAccountModal
+        open={drawModalOpen}
+        onOpenChange={setDrawModalOpen}
         account={{ ...accountInfo }}
       />
     </>
