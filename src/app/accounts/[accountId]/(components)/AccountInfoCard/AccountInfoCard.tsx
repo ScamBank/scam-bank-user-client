@@ -9,6 +9,7 @@ import {
   Hash,
   FileText,
   Phone,
+  ArrowDown,
 } from "lucide-react";
 import { ComponentProps, useState } from "react";
 import { ru } from "date-fns/locale";
@@ -68,12 +69,12 @@ export const AccountInfoCard = ({
                 </span>
               </div>
 
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center cursor-pointer [&_div]:hover:brightness-90">
                 <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center mb-2">
-                  <ArrowRight size={20} className="text-gray-700" />
+                  <ArrowDown size={20} className="text-gray-700" />
                 </div>
                 <span className="text-xs text-center text-gray-800">
-                  Между своими счетами
+                  Снять со счета
                 </span>
               </div>
 

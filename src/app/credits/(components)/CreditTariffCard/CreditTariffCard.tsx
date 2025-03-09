@@ -12,10 +12,12 @@ import { ComponentProps } from "react";
 
 interface CreditTariffCardProps extends ComponentProps<"div"> {
   tariff: CreditTariff;
+  withButton?: boolean;
 }
 
 export const CreditTariffCard = ({
   tariff,
+  withButton = false,
   className,
   ...props
 }: CreditTariffCardProps) => {
@@ -75,9 +77,11 @@ export const CreditTariffCard = ({
           </li>
         </ul>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">Взять кредит</Button>
-      </CardFooter>
+      {withButton && (
+        <CardFooter>
+          <Button className="w-full">Взять кредит</Button>
+        </CardFooter>
+      )}
     </Card>
   );
 };
