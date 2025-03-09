@@ -33,3 +33,21 @@ interface Account1c {
   Currency: "RUB";
   Balance: number;
 }
+
+type AccountOperation = {
+  OperationDate: string;
+  Amount: number;
+} & (
+  | {
+      OperationType: "Пополнение";
+      Where: string;
+    }
+  | {
+      OperationType: "Снятие";
+      From: string;
+    }
+);
+
+interface AccountInfo extends Account1c {
+  AccountOperations: AccountOperation[];
+}

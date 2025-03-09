@@ -2,6 +2,9 @@ import fetches from "@siberiacancode/fetches";
 
 export const instance = fetches.create({
   baseURL: process.env.API_URL || "http://localhost:4000/api",
+  headers: {
+    PIZDABOL: "ID_PIZDABOLA",
+  },
 });
 
 instance.interceptors.request.use(

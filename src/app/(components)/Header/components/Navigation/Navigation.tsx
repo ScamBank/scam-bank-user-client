@@ -11,7 +11,7 @@ export const Navigation = () => {
   const navLinkClassName = (href: string) => {
     return cn(
       "h-full flex items-center border-b-4 border-transparent",
-      pathname === href ? "opacity-100 border-black" : "opacity-50",
+      pathname.includes(href) ? "opacity-100 border-black" : "opacity-50",
     );
   };
 

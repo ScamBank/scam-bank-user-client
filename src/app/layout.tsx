@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Kantumruy_Pro } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "./(components)/Header";
 
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Скам Банк",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

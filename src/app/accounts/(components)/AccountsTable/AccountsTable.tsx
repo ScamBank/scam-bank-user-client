@@ -18,6 +18,7 @@ import {
 } from "@/components/ui";
 
 import { Eye } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { ComponentProps, useState } from "react";
 
 interface AccountsTableProps extends ComponentProps<"div"> {
@@ -25,6 +26,7 @@ interface AccountsTableProps extends ComponentProps<"div"> {
 }
 
 export const AccountsTable = ({ accounts, className }: AccountsTableProps) => {
+  const router = useRouter();
   const [selectedAccount, setSelectedAccount] = useState<Account1c | null>(
     null,
   );
@@ -58,7 +60,12 @@ export const AccountsTable = ({ accounts, className }: AccountsTableProps) => {
             </TableHeader>
             <TableBody>
               {accounts.map((account) => (
-                <TableRow key={account.Account}>
+                <TableRow
+                  key={account.Account}
+                  onClick={() =>
+                    router.push(`/accounts/${account.AccountGuid}`)
+                  }
+                >
                   <TableCell className="font-medium">
                     {formatAccountNumber(account.Account)}
                   </TableCell>
