@@ -24,9 +24,9 @@ export const Navigation = () => {
         <li className={navLinkClassName(ROUTES.CREDITS)}>
           <Link href={ROUTES.CREDITS}>Кредиты</Link>
         </li>
-        <li className={navLinkClassName(ROUTES.CLIENTS)}>
+        {/* <li className={navLinkClassName(ROUTES.CLIENTS)}>
           <Link href={ROUTES.CLIENTS}> Клиенты </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

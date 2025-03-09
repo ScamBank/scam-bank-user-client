@@ -35,10 +35,9 @@ const LoginPage = () => {
       params: { PhoneNumber: data.PhoneNumber },
     });
     if (authorizationResponse.success) {
-      console.log(authorizationResponse.data.UserGuid);
       await fetch("/api/login", {
         method: "POST",
-        body: JSON.stringify({ guid: authorizationResponse.data }),
+        body: JSON.stringify({ guid: authorizationResponse.data.UserGuid }),
       });
       router.push("/accounts");
     } else {

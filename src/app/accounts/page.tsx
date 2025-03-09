@@ -5,10 +5,10 @@ import { notFound } from "next/navigation";
 
 const AccountsPage = async () => {
   const cookieStore = await cookies();
-  const userGuid = cookieStore.get("userGuid")?.value!;
-  console.log("@guid", userGuid);
+  const userGuid = cookieStore.get("guid")?.value!;
+
   const accountsResponse = await getUserAccounts({
-    params: { UserGuid: "8a2e4702-fc13-11ef-81a1-005056bc249c" },
+    params: { UserGuid: userGuid },
   });
 
   if (!accountsResponse.success) return notFound();
