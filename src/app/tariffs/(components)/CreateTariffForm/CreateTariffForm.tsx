@@ -31,7 +31,7 @@ export const CreateTariffForm = () => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      TarifName: "",
+      TariffName: "",
       InterestRate: 0,
       MinAmount: 0,
       MaxAmount: 0,
@@ -49,7 +49,7 @@ export const CreateTariffForm = () => {
       MaxAmount: data.MaxAmount,
       MaxTerm: data.MaxTerm,
       MinAmount: data.MinAmount,
-      TarifName: data.TarifName,
+      TariffName: data.TariffName,
     });
 
     if (response.success) {
@@ -73,7 +73,7 @@ export const CreateTariffForm = () => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
-              name="TarifName"
+              name="TariffName"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Название тарифа</FormLabel>

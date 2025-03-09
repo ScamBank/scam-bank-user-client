@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const formSchema = z
   .object({
-    TarifName: z.string().min(2, {
+    TariffName: z.string().min(2, {
       message: "Tariff name must be at least 2 characters.",
     }),
     InterestRate: z.coerce

@@ -1,7 +1,7 @@
 import { instance } from "@/utils/api/instance";
 
 interface CreateTariffBody {
-  TarifName: string;
+  TariffName: string;
   InterestRate: number;
   MinAmount: number;
   MaxAmount: number;

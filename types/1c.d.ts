@@ -53,8 +53,8 @@ interface AccountInfo extends Account1c {
 }
 
 interface CreditTariff {
-  TarifGuid: string;
-  TarifName: string;
+  TariffGuid: string;
+  TariffName: string;
   InterestRate: number;
   MinAmount: number;
   MaxAmount: number;

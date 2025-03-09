@@ -9,7 +9,7 @@ const CreditsPage = async () => {
       <ul className="flex flex-wrap gap-6 justify-center">
         {creditsTariffsResponse.success &&
           creditsTariffsResponse.data.map((tariff) => (
-            <li key={tariff.TarifGuid}>
+            <li key={tariff.TariffGuid}>
               <CreditTariffCard tariff={tariff} />
             </li>
           ))}

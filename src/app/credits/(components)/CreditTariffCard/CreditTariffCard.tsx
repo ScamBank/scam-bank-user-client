@@ -23,7 +23,7 @@ export const CreditTariffCard = ({
     <Card className=" flex flex-col hover:shadow-lg transition-shadow">
       <CardHeader className="pb-2">
         <div className="flex justify-between items-start">
-          <CardTitle className="text-xl">{tariff.TarifName}</CardTitle>
+          <CardTitle className="text-xl">{tariff.TariffName}</CardTitle>
           <Badge variant="outline" className="bg-primary/10 text-primary">
             {tariff.InterestRate}% Ставка
           </Badge>
