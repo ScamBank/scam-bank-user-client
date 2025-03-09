@@ -60,6 +60,7 @@ export const TakeCreditModal = ({ tariff, ...props }: TakeCreditModalProps) => {
   });
 
   useEffect(() => {
+    if (!document) return;
     if (!document.cookie) return;
     form.setValue("UserGuid", getCookie("guid") || "");
   }, [document]);
