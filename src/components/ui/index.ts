@@ -9,3 +9,4 @@ export * from "./popover";
 export * from "./button";
 export * from "./table";
 export * from "./dialog";
+export * from "./switch";

@@ -7,7 +7,7 @@ export const POST = async (req: NextRequest) => {
 
   response.cookies.set("guid", guid, {
     secure: false,
-    httpOnly: true,
+    httpOnly: false,
     maxAge: 60 * 60 * 24 * 7,
     path: "/",
   });
