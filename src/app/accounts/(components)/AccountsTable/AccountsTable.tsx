@@ -17,7 +17,7 @@ import {
   DialogTitle,
 } from "@/components/ui";
 
-import { Eye } from "lucide-react";
+import { Eye, Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ComponentProps, useState } from "react";
 
@@ -81,14 +81,28 @@ export const AccountsTable = ({ accounts, className }: AccountsTableProps) => {
                   <TableCell className="text-right">
                     {formatAmount(account.Balance, account.Currency)}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="flex gap-2 items-center">
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => viewAccountDetails(account)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        viewAccountDetails(account);
+                      }}
                       aria-label="View account details"
                     >
-                      <Eye className="h-4 w-4" />
+                      <Eye className="size-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        alert("delete account");
+                        router.refresh();
+                      }}
+                    >
+                      <Trash className="size-4" />
                     </Button>
                   </TableCell>
                 </TableRow>
