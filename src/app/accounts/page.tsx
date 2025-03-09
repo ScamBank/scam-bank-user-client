@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui";
-import { AccountsTable } from "./(components)";
+import { AccountsTable, CreateAccountButton } from "./(components)";
 import { getUserAccounts } from "@/utils/api/requests/get/account1c";
 
 const AccountsPage = async () => {
@@ -10,9 +9,7 @@ const AccountsPage = async () => {
   return (
     <main className="py-6 flex  gap-6 flex-col items-center justify-center w-1/3 mx-auto">
       <AccountsTable accounts={accountsResponse.data} className="w-full" />
-      <Button size="lg" className="w-full">
-        Новый счет
-      </Button>
+      <CreateAccountButton />
     </main>
   );
 };

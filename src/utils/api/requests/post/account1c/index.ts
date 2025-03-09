@@ -8,12 +8,12 @@ interface PostAccountCreateRequestParams {
 type PostAccountCreateRequestConfig =
   FetchesRequestConfig<PostAccountCreateRequestParams>;
 
-export const postAccountCreate = async ({
+export const postUserAccountCreate = async ({
   params,
   config,
 }: PostAccountCreateRequestConfig) =>
   instance.post<unknown, ApiResponse<{}>>(
-    "/kondakov_patterns_core/hs/BankSystem/OpenAnAccount",
+    "/core1c/kondakov_patterns_core/hs/BankSystem/OpenAnAccount",
     { UserGuid: params.UserGuid },
     { ...config },
   );
