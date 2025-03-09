@@ -18,14 +18,6 @@ instance.interceptors.request.use(
 );
 
 instance.interceptors.response.use(
-  (response) => {
-    return { ...response, success: true };
-  },
-  (error) => {
-    console.log(
-      `${error.config.method?.toUpperCase()} request on: ${error.config.url} failed\nError code - ${error.response.status}\n${error.response.data}`,
-    );
-
-    return { ...error.response, success: false };
-  },
+  (response) => ({ ...response, success: true }),
+  (error) => ({ ...error.response, success: false }),
 );

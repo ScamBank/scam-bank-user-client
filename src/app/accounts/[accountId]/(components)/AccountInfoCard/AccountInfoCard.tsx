@@ -25,13 +25,7 @@ export const AccountInfoCard = ({
   ...props
 }: AccountInfoCardProps) => {
   const [topUpModalOpen, setTopUpModalOpen] = useState(false);
-  console.log(
-    accountInfo.AccountOperations.toSorted(
-      (a, b) =>
-        new Date(b.OperationDate).getTime() -
-        new Date(a.OperationDate).getTime(),
-    ),
-  );
+
   return (
     <>
       <div className={cn(className)} {...props}>
