@@ -17,7 +17,7 @@ interface CreditTariffCardProps extends ComponentProps<"div"> {
 
 export const CreditTariffCard = ({
   tariff,
-  withButton = false,
+  withButton = true,
   className,
   ...props
 }: CreditTariffCardProps) => {

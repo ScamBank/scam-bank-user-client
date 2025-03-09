@@ -14,7 +14,7 @@ const TariffsPage = async () => {
         {tariffsResponse.success &&
           tariffsResponse.data.map((tariff, index) => (
             <li key={index}>
-              <CreditTariffCard tariff={tariff} />
+              <CreditTariffCard tariff={tariff} withButton={false} />
             </li>
           ))}
       </ul>
