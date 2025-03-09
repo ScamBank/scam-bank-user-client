@@ -42,7 +42,6 @@ export const CreateTariffForm = () => {
   });
 
   const onSubmit = async (data: FormValues) => {
-    console.log(data);
     const response = await postCreateTariff({
       GracePeriod: data.GracePeriod,
       LatePaymentPenalty: data.LatePaymentPenalty,
@@ -64,9 +63,9 @@ export const CreateTariffForm = () => {
   return (
     <Card className="mx-auto w-full max-w-lg h-fit fixed">
       <CardHeader>
-        <CardTitle>Create Credit Tariff</CardTitle>
+        <CardTitle>Создание кредитного тарифа</CardTitle>
         <CardDescription>
-          Fill in the details to create a new credit tariff.
+          Заполните данные, чтобы создать новый кредитный тариф.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -77,13 +76,11 @@ export const CreateTariffForm = () => {
               name="TarifName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tariff Name</FormLabel>
+                  <FormLabel>Название тарифа</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter tariff name" {...field} />
+                    <Input placeholder="Введите название тарифа" {...field} />
                   </FormControl>
-                  <FormDescription>
-                    The name of the credit tariff.
-                  </FormDescription>
+                  <FormDescription>Название кредитного тарифа.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -95,7 +92,7 @@ export const CreateTariffForm = () => {
                 name="InterestRate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Interest Rate (%)</FormLabel>
+                    <FormLabel>Процентная ставка (%)</FormLabel>
                     <FormControl>
                       <Input
                         type="number"
@@ -107,7 +104,7 @@ export const CreateTariffForm = () => {
                       />
                     </FormControl>
                     <FormDescription>
-                      Annual interest rate percentage.
+                      Годовая процентная ставка в процентах.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -119,7 +116,7 @@ export const CreateTariffForm = () => {
                 name="LatePaymentPenalty"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Late Payment Penalty (%)</FormLabel>
+                    <FormLabel>Штраф за просрочку платежа (%)</FormLabel>
                     <FormControl>
                       <Input
                         type="number"
@@ -131,7 +128,7 @@ export const CreateTariffForm = () => {
                       />
                     </FormControl>
                     <FormDescription>
-                      Penalty percentage for late payments.
+                      Процент штрафа за просрочку платежей.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -145,11 +142,13 @@ export const CreateTariffForm = () => {
                 name="MinAmount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Minimum Amount</FormLabel>
+                    <FormLabel>Минимальная сумма</FormLabel>
                     <FormControl>
                       <Input type="number" min="0" placeholder="0" {...field} />
                     </FormControl>
-                    <FormDescription>Minimum loan amount.</FormDescription>
+                    <FormDescription>
+                      Минимальная сумма кредита.
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -160,11 +159,13 @@ export const CreateTariffForm = () => {
                 name="MaxAmount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Maximum Amount</FormLabel>
+                    <FormLabel>Максимальная сумма</FormLabel>
                     <FormControl>
                       <Input type="number" min="0" placeholder="0" {...field} />
                     </FormControl>
-                    <FormDescription>Maximum loan amount.</FormDescription>
+                    <FormDescription>
+                      Максимальная сумма кредита.
+                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -177,12 +178,12 @@ export const CreateTariffForm = () => {
                 name="MaxTerm"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Maximum Term (months)</FormLabel>
+                    <FormLabel>Максимальный срок (месяцы)</FormLabel>
                     <FormControl>
                       <Input type="number" min="1" placeholder="0" {...field} />
                     </FormControl>
                     <FormDescription>
-                      Maximum loan term in months.
+                      Максимальный срок кредитования в месяцах.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -194,12 +195,13 @@ export const CreateTariffForm = () => {
                 name="GracePeriod"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Grace Period (days)</FormLabel>
+                    <FormLabel>Льготный период (дни)</FormLabel>
                     <FormControl>
                       <Input type="number" min="0" placeholder="0" {...field} />
                     </FormControl>
                     <FormDescription>
-                      Grace period in days before penalties apply.
+                      Льготный период в несколько дней до применения штрафных
+                      санкций.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>

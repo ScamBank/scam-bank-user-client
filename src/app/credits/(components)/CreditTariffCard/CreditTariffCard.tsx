@@ -18,17 +18,7 @@ interface CreditTariffCardProps extends ComponentProps<"div"> {
 export const CreditTariffCard = ({
   tariff,
   withButton = true,
-  className,
-  ...props
 }: CreditTariffCardProps) => {
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("ru-RU", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    }).format(Number(value));
-  };
-
   return (
     <Card className=" flex flex-col hover:shadow-lg transition-shadow">
       <CardHeader className="pb-2">
@@ -46,8 +36,7 @@ export const CreditTariffCard = ({
             <span className="text-sm">
               Сумма кредита:{" "}
               <span className="font-semibold">
-                {formatCurrency(tariff.MinAmount)} -{" "}
-                {formatCurrency(tariff.MaxAmount)}
+                {tariff.MinAmount}₽ - {tariff.MaxAmount}₽
               </span>
             </span>
           </li>
