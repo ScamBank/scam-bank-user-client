@@ -19,5 +19,5 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response) => ({ ...response, success: true }),
-  (error) => ({ ...error.response, success: false }),
+  (error) => ({ error: { ...error.response }, success: false }),
 );

@@ -32,4 +32,4 @@ type ApiResponse<T> =
   | ({ success: true } & import("@siberiacancode/fetches").FetchesResponse<T>)
   | ({
       success: false;
-    } & import("@siberiacancode/fetches").FetchesResponse<Error>);
+    } & { error: import("@siberiacancode/fetches").FetchesResponse<Error> });

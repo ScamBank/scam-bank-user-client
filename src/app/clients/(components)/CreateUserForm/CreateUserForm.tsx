@@ -60,9 +60,8 @@ export const CreateUserForm = () => {
       UserType: "User",
     } satisfies CreateUserDto1S;
     const response = await postCreateUser1c(body);
-    console.log(response.success);
     if (!response.success) {
-      alert(response.data.error.split(":")[1] ?? response.data.error);
+      alert(response.error.data.error.split(":")[1] ?? response.error.data);
     }
     router.refresh();
   }

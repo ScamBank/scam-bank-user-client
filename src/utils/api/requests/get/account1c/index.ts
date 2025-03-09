@@ -12,7 +12,7 @@ export const getUserAccounts = async ({
   params,
   config,
 }: GetUserAccountsRequestConfig) =>
-  instance.get<Account1c[]>(
+  instance.get<unknown, ApiResponse<Account1c[]>>(
     "/core1c/kondakov_patterns_core/hs/BankSystem/GetAccountsOfUser",
     {
       params: { UserGuid: params.UserGuid },
