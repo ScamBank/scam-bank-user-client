@@ -1,19 +1,21 @@
-import { getUsers } from "@/utils/api/requests/get";
-import { ClientCard } from "./(components)/ClientCard/ClientCard";
-import { CreateUserForm } from "./(components)/CreateUserForm/CreateUserForm";
+import { getUsers1c } from "@/utils/api/requests/get";
+import { ClientCard, CreateUserForm } from "./(components)";
 
 const ClientsPage = async () => {
-  const users = await getUsers();
+  const users1c = await getUsers1c();
 
   return (
     <main className="py-6 flex justify-evenly">
-      <CreateUserForm />
+      <div className="relative w-full max-w-lg">
+        <CreateUserForm />
+      </div>
       <ul className="flex flex-col gap-4 ">
-        {users.data.map((user) => (
-          <li key={user.id}>
-            <ClientCard user={user} />
-          </li>
-        ))}
+        {users1c.success &&
+          users1c.data.map((user, index) => (
+            <li key={index}>
+              <ClientCard user={user} />
+            </li>
+          ))}
       </ul>
     </main>
   );

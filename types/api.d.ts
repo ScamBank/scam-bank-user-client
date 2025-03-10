@@ -23,3 +23,13 @@ interface CreateUserDto {
   passport: string;
   birthDate: string;
 }
+
+interface Error {
+  error: string;
+}
+
+type ApiResponse<T> =
+  | ({ success: true } & import("@siberiacancode/fetches").FetchesResponse<T>)
+  | ({
+      success: false;
+    } & { error: import("@siberiacancode/fetches").FetchesResponse<Error> });

@@ -11,28 +11,25 @@ export const Navigation = () => {
   const navLinkClassName = (href: string) => {
     return cn(
       "h-full flex items-center border-b-4 border-transparent",
-      pathname === href ? "opacity-100 border-black" : "opacity-50",
+      pathname.startsWith(href) ? "opacity-100 border-black" : "opacity-50",
     );
   };
 
   return (
     <nav className="h-full">
       <ul className={"flex h-full items-center gap-10 [&_li]:font-medium"}>
-        <li className={navLinkClassName(ROUTES.FAVORITES)}>
-          <Link href={ROUTES.FAVORITES}>Главная</Link>
+        <li className={navLinkClassName(ROUTES.ACCOUNTS)}>
+          <Link href={ROUTES.ACCOUNTS}>Счета</Link>
         </li>
-        <li className={navLinkClassName(ROUTES.TEMPLATES)}>
-          <Link href={ROUTES.TEMPLATES}> Шаблоны </Link>
+        <li className={navLinkClassName(ROUTES.CREDITS)}>
+          <Link href={ROUTES.CREDITS}>Кредиты</Link>
         </li>
-        <li className={navLinkClassName(ROUTES.HISTORY)}>
-          <Link href={ROUTES.HISTORY}> История </Link>
+        <li className={navLinkClassName(ROUTES.CREDITS_MY)}>
+          <Link href={ROUTES.CREDITS_MY}>Мои Кредиты</Link>
         </li>
-        <li className={navLinkClassName(ROUTES.PAY)}>
-          <Link href={ROUTES.PAY}> Платежи и переводы </Link>
-        </li>
-        <li className={navLinkClassName(ROUTES.CLIENTS)}>
+        {/* <li className={navLinkClassName(ROUTES.CLIENTS)}>
           <Link href={ROUTES.CLIENTS}> Клиенты </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

@@ -4,21 +4,21 @@ import "./globals.css";
 import { Header } from "./(components)/Header";
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["cyrillic"],
 });
 
 export const metadata: Metadata = {
-  title: "Scam банк",
+  title: "Скам Банк",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="ru">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased bg-company-bg`}>
         <Header />
         {children}
       </body>

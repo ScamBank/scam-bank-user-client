@@ -1,7 +1,7 @@
 export const ROUTES = {
-  FAVORITES: "/favorites",
-  TEMPLATES: "/templates",
-  HISTORY: "/history",
-  PAY: "/pay",
+  ACCOUNTS: "/accounts",
+  LOGIN: "/login",
+  CREDITS: "/credits",
   CLIENTS: "/clients",
+  CREDITS_MY: "/my",
 };
