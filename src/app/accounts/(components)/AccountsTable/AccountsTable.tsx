@@ -22,14 +22,12 @@ import { useRouter } from "next/navigation";
 import { ComponentProps, useState } from "react";
 
 interface AccountsTableProps extends ComponentProps<"div"> {
-  accounts: Account1c[];
+  accounts: Account[];
 }
 
 export const AccountsTable = ({ accounts, className }: AccountsTableProps) => {
   const router = useRouter();
-  const [selectedAccount, setSelectedAccount] = useState<Account1c | null>(
-    null,
-  );
+  const [selectedAccount, setSelectedAccount] = useState<Account | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const formatAccountNumber = (accountNumber: string) => {
@@ -40,7 +38,7 @@ export const AccountsTable = ({ accounts, className }: AccountsTableProps) => {
     return ` ${amount.toLocaleString()} ${currency === "RUB" ? "₽" : "$"}`;
   };
 
-  const viewAccountDetails = (account: Account1c) => {
+  const viewAccountDetails = (account: Account) => {
     setSelectedAccount(account);
     setIsDialogOpen(true);
   };

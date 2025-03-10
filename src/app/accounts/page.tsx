@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { AccountsTable, CreateAccountButton } from "./(components)";
-import { getUserAccounts } from "@/utils/api/requests/get/account1c";
+import { getUserAccounts } from "@/utils/api/requests/get/account";
 import { notFound } from "next/navigation";
 
 const AccountsPage = async () => {

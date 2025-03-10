@@ -11,7 +11,7 @@ import {
 } from "@/components/ui";
 
 interface ClientCardProps {
-  user: User1c;
+  user: User;
 }
 
 export const ClientCard = ({ user }: ClientCardProps) => (

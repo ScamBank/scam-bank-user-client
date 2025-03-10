@@ -24,11 +24,11 @@ import { z } from "zod";
 import { formSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { postTopUpAccount } from "@/utils/api/requests/post/account1c/topUp";
+import { postTopUpAccount } from "@/utils/api/requests/post/account/topUp";
 
 interface TopUpAccountModalProps extends DialogProps {
   onOpenChange: (open: boolean) => void;
-  account: Account1c;
+  account: Account;
 }
 
 export const TopUpAccountModal = ({

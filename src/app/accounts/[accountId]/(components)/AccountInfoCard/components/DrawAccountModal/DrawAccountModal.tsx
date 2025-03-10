@@ -25,7 +25,7 @@ import { DialogProps } from "@radix-ui/react-dialog";
 
 interface DrawAccountModalProps extends DialogProps {
   onOpenChange: (open: boolean) => void;
-  account: Account1c;
+  account: Account;
 }
 
 export const DrawAccountModal = ({

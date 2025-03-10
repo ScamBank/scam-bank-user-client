@@ -7,7 +7,7 @@ import { formSchema } from "./constants/formSchema";
 
 import { InputMask } from "@react-input/mask";
 
-import { postCreateUser1c } from "@/utils/api/requests/post";
+import { postCreateUser } from "@/utils/api/requests/post";
 import {
   Button,
   Card,
@@ -58,8 +58,8 @@ export const CreateUserForm = () => {
       Snils: values.Snils,
       Surname: values.Surname,
       UserType: "User",
-    } satisfies CreateUserDto1S;
-    const response = await postCreateUser1c(body);
+    } satisfies CreateUserDto;
+    const response = await postCreateUser(body);
     if (!response.success) {
       alert(response.error.data.error.split(":")[1] ?? response.error.data);
     }
