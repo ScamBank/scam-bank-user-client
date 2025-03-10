@@ -40,6 +40,7 @@ const LoginPage = () => {
         body: JSON.stringify({ guid: authorizationResponse.data.UserGuid }),
       });
       router.push("/accounts");
+      router.refresh();
     } else {
       alert(
         authorizationResponse.error.data.error.split(":")[1] ??

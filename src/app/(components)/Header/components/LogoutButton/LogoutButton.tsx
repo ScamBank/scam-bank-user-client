@@ -12,7 +12,7 @@ export const LogoutButton = () => {
         method: "POST",
       },
     );
-    router.push("/login");
+    router.refresh();
   };
 
   return (
